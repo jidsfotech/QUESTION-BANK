@@ -1,0 +1,46 @@
+{% load staticfiles %}
+
+<!Doctype>
+<html>
+	
+	<head>
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"  media="screen">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-responsive.css' %}">
+        
+    <title>AJAX-JQUERY-JAVASCRIPT</title>
+
+		<h5><center>I AM THE HEADER OF THE AJAX TEST PAGE</center></head></h5>
+
+	</head>
+
+	<body>
+		<center><h3> I WILL TEST ALL MY AJAX CODES HERE BEFORE USE</h3></center>
+        
+    <h4> Im a Drop Down List <h4>
+	  <select id="dynamic_select">
+      <option value="" selected>Pick a Website</option>
+      <option value="http://www.google.com/">Google</option>
+      <option value="http://www.youtube.com/">YouTube</option>
+      <option value="http://www.stackoverflow.com/">Stack Overflow</option>
+    </select>
+  
+<div>
+    <p id="demo"> Test to change with java script</p>
+    <button type="button" onclick="DemoFunction()"> change text </button>
+</div>
+
+<ul>
+  <li>foo</li>
+  <li>bar</li>
+</ul>
+
+
+
+
+<script src="{% static 'js/jquery-2.2.2.min.js' %}"> </script>
+<script src="{% static 'js/bootstrap.min.js' %}"> </script>
+<script src="{% static 'js/DemoJqueryAjaxJavaScript.js' %}"></script>
+
+</body>
+</html>

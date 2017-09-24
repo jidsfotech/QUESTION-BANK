@@ -1,0 +1,57 @@
+
+{% extends "base.html" %}
+
+{%load staticfiles%}
+
+{% block head_title %} QuestionBank {% endblock %}
+
+{%load Qbank_filters%}
+
+{% block sidebar_block %}
+
+{% if user.is_authenticated %}
+
+
+
+   {% if classlevel_list %}
+   <table id="LevelTable_id" class="">
+
+   {% for message in messages %}
+    <div class="alert {{ message.tag }} alert-dismissible" role="alert" >
+        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+        <span aria-hidden="true">&times;</span>
+       </button>
+        {{ message }}
+         
+   </div>
+   {% endfor %}
+
+   <thead>
+   <tr>
+       <th><h3><strong><font color="1589FF">SELECT CLASS LEVEL</font></strong></h3></th>
+   </tr>
+   </thead>
+
+   <tbody> 
+     
+   {% for classlist in classlevel_list %}
+   <tr>
+
+   <td><strong><a href = "/Qbank/courses/{{classlist|repl_space_underscore}}">{{ classlist.level }}</a></strong></td>
+   
+   </tr>
+   {% endfor %}
+
+   </tbody>
+   </table>
+   
+   {% else %}
+   
+   <strong><font color="#43C6DB">NO CLASS TO SELECT</font></strong>
+   
+   {% endif %}
+{% endif %}
+       
+    
+{% endblock %}
+

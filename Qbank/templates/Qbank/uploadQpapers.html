@@ -1,0 +1,44 @@
+
+
+{% extends "base.html" %}
+
+{%load staticfiles%}
+
+{% block head_title %} UPLOAD QUESTION PAPERS {% endblock %}
+
+{% block sidebar_block %}
+
+ {% for message in messages %}
+    <div class="alert {{ message.tag }} alert-dismissible" role="alert" >
+        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+        <span aria-hidden="true">&times;</span>
+       </button>
+        {{ message }}
+         
+   </div>
+   {% endfor %}
+
+<div>
+<h4><center> <font color="1589FF">UPLOAD QUESTION PAPERS </font></h4></center>
+</div>
+    
+<form id="uploadQpapers" method="post" action="/Qbank/uploadQpapers/" enctype="multipart/form-data">  
+
+<div>
+<center><a class="btn btn-primary" href="/Qbank/levels/">Go Back To View Question Papers</a></center>
+</div>
+
+{% csrf_token %}
+
+{{ Qpapers.as_p }}
+
+<center><button class="btn btn-primary" type="submit">Save</button></center>
+
+
+</form>
+
+{% endblock %}
+
+
+
+

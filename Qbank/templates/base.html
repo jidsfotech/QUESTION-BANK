@@ -1,0 +1,119 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+        <!-- Bootstrap "including all these css files by externally linking (importing) them" -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"  media="screen">
+        <link rel="stylesheet" href="{% static 'css/bootstrap-responsive.css' %}">
+        <link rel="stylesheet" href="{% static 'css/Qbank-CSS.css' %}">
+        <link rel="stylesheet" href="{% static 'css/bootstrap-fluid-adj.css' %}">
+        <link rel="stylesheet" href="{% static 'css/QbankSlide.css' %}">
+        <link rel="stylesheet" href="{% static 'DataTables-1.10.13/media/css/jquery.dataTables.css'%}">
+        <link rel="stylesheet" href="{% static  'DataTables-1.10.13/extensions/Responsive/css/responsive.dataTables.css'%}">
+
+        <!--end of boostrap css linking (importing)-->
+
+        
+        <!-- Displays the title specified in the inheriting file (index.html) -->
+        <title> {% block head_title %}{% endblock %} </title>
+
+    </head>
+
+    <body>
+
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Navigation bar begins-->
+        <div class="navbar navbar-inverse navbar-fixed-top">
+          <div class="navbar-inner">
+            <div class="container">
+            
+              <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="brand" href="/Qbank/levels">Question Bank</a>
+              <div class="nav-collapse in collapse" style="height: auto;">
+
+                <ul class="nav pull-right">
+                  
+                  {% if user.is_authenticated %}
+
+                  <li class="active"><a href=""> Welcome, {{ user.username }}!</a></li>
+                  <li class="active"><a href="/Qbank/logout/">Logout</a></li>
+                  <li class="active"><a href="/Qbank/changepassword/">ChangePassword</a></li>
+
+                  {% else %}
+
+                  <li class="active"><a href="/Qbank/">Home</a></li>
+                  <li class="active"><a href="/Qbank/about">About</a></li>
+
+                   
+                   {% endif %}
+
+                </ul>
+                  {% if user.is_authenticated %}
+                  {% if perms.Qbank.add_questionbank %}
+                <ul class="nav">
+                  <li class="active"><a href="/Qbank/uploadQpapers/">Upload Question Papers</a></li>
+                  {% endif %}
+                  {% endif %}
+                
+                </ul>
+
+              </div>
+            </div>  
+          </div>
+        </div>
+
+        <!--side bar navigation and the main content pane end-->
+        <div class="container-fluid">
+          <div class="row-fluid">
+            <div class="span5">
+              <div class="well sidebar-nav">
+                {% block sidebar_block %}{% endblock %}
+              </div>
+              <!--/.well -->
+            </div>
+            <!--/span-->
+
+            <div class="span7">
+              {% block body_block %} {% endblock %}
+            </div>
+            <!--/span-->
+          </div>
+          <!--/row-->
+      </div>
+      <!--/.fluid-container-->
+      <hr>
+
+
+      <!-- footer begins-->
+      <footer>
+        <div class="container">
+        <p><font color="FFFFFF">&copy; Department of Computer Science 2017</font></p>
+        </div>
+      </footer>
+    <!-- footer end--> 
+
+    <!-- Le javascript
+    ================================================== -->
+    <script src="{% static 'js/jquery-2.2.2.js' %}"></script>
+    <script src="{% static 'DataTables-1.10.13/media/js/jquery.dataTables.js'%}" ></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'DataTables-1.10.13/extensions/Responsive/js/dataTables.responsive.js'%}"></script>
+    <script src="{% static 'js/Qbank-ajax.js' %}"></script>
+    <!-- end of js scripts-->
+
+    </body>
+</html>

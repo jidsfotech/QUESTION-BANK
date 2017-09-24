@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{%load staticfiles%}
+
+{% block head_title %} QuestionBank {% endblock %}
+
+
+{%load Qbank_filters%}
+
+<!-- populate the side bar base on selected  class level-->
+{% block sidebar_block %}
+
+{% if user.is_authenticated %}
+
+    <div><center><h4><font color="1589FF">LIST OF COURSES FOR {{selectedLev}}</font></h4></center>
+    </div>
+
+<div>
+<center><a class="btn btn-primary" href="/Qbank/levels/">Go Back To Select Another Class </a></center>
+</div>
+        
+    
+       
+        {% if CourseToDisp %}
+        
+        <table id="CourseTable_id" class="">
+
+        <thead>
+            <tr>
+                <th><h4><font color="1589FF">Course Title</font></h4></th>
+                <th><h4><font color="1589FF">Course Code</font></h4></th>
+            </tr>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        {% for course in CourseToDisp %}
+
+        <tr>
+            <td><h5><font color="1589FF">{{course.Course_Title}}</font></h5></td>
+
+            <td>
+                <button id="loader" style="width:80px"><a class="courses" href ="javascript:;" rel="/Qbank/questions/{{course.Course_Code|repl_space_underscore}}">{{course.Course_Code}} </a></button>
+            </td>
+        </tr> 
+
+        {%endfor%}
+
+        </tbody>
+        </table>
+
+    <div>
+        {% else %}
+        
+        <strong> THERE ARE NO COURSE TO DISPLAY FOR THIS LEVEL</strong>
+        
+       {% endif %} 
+
+    </div> 
+
+    
+{% endif %} 
+
+{% endblock %}
+<!-- end populates the side bar base on selected  class level-->
+
+
+<!--====++++********+++++ populates the body content base on selected  course for a class level ++++******++++++======-->
+
+{% block body_block %}
+<div id="QuestionPapers">
+
+<div>
+    <center><font color="FFFFFF"><h4 id="QpapersHeader">Question papers page header</h4></font></center>
+</div>
+
+<!-- +++++++++++++++++++++++++++++++ Adding Question papers +++++++++++++++++++++++++++++++++++ -->
+<!-- DATA TABLE-->
+
+<table id="QuestionPapers_id">
+     <thead>    
+        <tr>
+            <th><h4><font color="FFFFFF">QuestionPapers</font></h4></th>
+            <th><h4><font color="FFFFFF">Semester</font></h4></th>
+            <th><h4><font color="FFFFFF">Unit</font></h4></th>
+            <th><h4><font color="FFFFFF">Date</font></h4></th>
+        </tr>
+     </thead>
+     <tbody id="Qlist">
+         
+     </tbody>
+</table>
+</div>
+<!-- End DataTable -->
+<!---++++++++++++++++++******************************************************************************+++++++++++++++++++++++-->
+
+{% endblock %}
+

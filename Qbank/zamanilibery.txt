@@ -1,0 +1,49 @@
+""" zamani libery
+
+def Questions(request, sel_course):
+    
+    SelCourse = sel_course.replace('_',' ')
+    
+    dictQuest_papers={}
+    questions_list =[]
+    
+    if request.is_ajax(): 
+    
+        questions_dict = {'selcourse':SelCourse}  
+        
+        Quest_For_course = QuestionBank.objects.filter(Course_Code = SelCourse).distinct()
+        
+        for questions in Quest_For_course:  
+        
+            QuestionPapers = serialize_field(questions.question_papers)
+            Date = serialize_field(questions.Date)
+        
+            dictQuest_papers['QuestionPapers'] = serializedFile
+            dictQuest_papers['Date'] = serializedDate
+            dictQuest_papers['SelCourse'] = SelCourse
+            questions_list.append(dictQuest_papers)
+            
+                  
+        json_data = json.dumps(questions_list)
+        return HttpResponse(json_data, content_type="application/json")
+       
+    else:
+        Http404
+=============================================================================================================       
+def Questions(request, sel_course):
+   
+    SelCourse = sel_course.replace('_',' ')
+    
+    
+    
+    if request.is_ajax(): 
+    
+        QuestionPapaers =  QuestionBank.objects.filter(Course_Code=SelCourse).values_list('question_papers', 'Date')
+        
+        json_list_QuestionPapers = json.dumps(list(QuestionPapaers), cls=DjangoJSONEncoder)
+        return JsonResponse(json_list_QuestionPapers, safe=False)
+        
+        
+        
+        
+    """
