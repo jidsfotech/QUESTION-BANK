@@ -1,2 +1,9 @@
-# QUESTION-BANK
-This is a Python Web Application which facilitates easy storage and retrieval of question papers for future references
+Question Bank Application
+This is a Python Web Application which facilitates easy storage and retrieval of question papers for future references. The Application have two distinct website interfaces i.e. the Admin website and the Question Bank Application website. The Application has three major categories of users (Lecturers, Students, and Administrators) each with different access level. All users of the website must have a valid authentication username and password to be able to access content of the website. Lecturers have the privilege to search, view, download and upload old or new question papers, while students have the privilege to search, view and download question papers. Lecturers can reference past question papers to prepare new ones for Class Tests, Exams, etc. There are two categories Administrators, they are Super admin and Staff admin, the super admin have the overall privileges to access everything on the site including creating of account and setting permissions for other low level Admin, lecturers and students. 
+Features:
+	The Application is made up of two distinct website interfaces i.e.( the Admin website and the Question Bank Application website)
+	
+Features that can be added in future :
+•	A feature for viewing the user's history of question papers - this will help the user to view all previously created question papers for a subject. Currently, lecturers have paper-written question papers or soft-copy of question papers stored in various pendrives, hard disks, etc. This app will serve as a single point for storage of all question papers which the users can refer anytime they need.
+•	A feature for generating question banks for subject - Currently, we have Question Bank books for students which acts as a reference for previous years questions. This feature would help to retrieve all the questions from all previous question papers for each subject and generate a question bank. Lecturers can distribute this to students for reference.
+
